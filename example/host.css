@@ -1,0 +1,57 @@
+/*TODO: add normalize*/
+
+.host-container,
+.host-container * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    padding: 20px;
+    background-color: #F9F9F9;
+}
+
+.host-field {
+    padding: 5px 20px;
+}
+
+.host-input {
+    border-radius: 5px;
+    border: 2px solid #CCC;
+    background-color: #FFF;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.host-input__sm {
+    max-width: 40px;
+}
+
+.host-input__md {
+    max-width: 800px;
+}
+
+.host-label {
+    color: #555;
+    display: block;
+    font-size: 11px;
+    padding: 0 0 5px;
+}
+
+.host-button {
+    background-color: blue;
+    color: white;
+    border: 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    margin: 10px 20px;
+}
+
+.error{
+    color: red;
+}
+
+.settings-input{
+    width: 450px;
+}

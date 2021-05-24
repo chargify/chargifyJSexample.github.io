@@ -1,0 +1,54 @@
+/*TODO: add normalize*/
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.cfy-field {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.cfy-input {
+    border-radius: 3px;
+    border: 1px solid blue;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.cfy-input__sm {
+    max-width: 50px;
+}
+
+.cfy-input__md {
+    max-width: 100px;
+}
+
+.cfy-label {
+    color: gray;
+    display: block;
+    font-size: 12px;
+    padding: 0 0 5px;
+}
+
+.cfy-invalid-message {
+    display: none;
+    font-size: 9px;
+}
+
+.cfy-additional-label {
+    font-size: 10px;
+}
+
+.cfy-field--invalid .cfy-label {
+    color: orange;
+}
+
+.cfy-field--invalid .cfy-invalid-message {
+    color: orange;
+    display: block;
+}

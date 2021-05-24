@@ -2,10 +2,21 @@
 <html lang="en">
   <head>
     <title>Chargify Example</title>
-<!--    <link rel="stylesheet" type="text/css" href="./example/host.css" />-->
+    <link rel="stylesheet" type="text/css" href="./example/host.css" />
   </head>
 
   <body>
+    <form class="settings-form">
+      <h2 id="chargify-js-settings">Settings</h2>
+      <input type="text" id="chargify-js-src" class="settings-input" name="type"> Chargify.js path<br>
+      <input type="text" id="public-key" class="settings-input" name="type"> Public Key<br>
+      <input type="text" id="server-host" class="settings-input" name="type"> Server Host (https://acme.chargify.test)<br>
+      <div class="error" style="display: none;">
+        <span class="error-text">Fill fields</span><br>
+      </div>
+      <button type="button" id="settings-submit">Save</button>
+    </form>
+
     <form id="payment-types" style="display: none; margin-bottom: 20px;">
       <input type="radio" id="payment-type-card" name="type" value="card" checked>Credit Card<br>
       <input type="radio" id="payment-type-bank" name="type" value="bank">Bank Account<br>
@@ -51,61 +62,6 @@
       3ds (Wincave): 5453010000095323, password: secone1
     </div>
 
-    <script src="https://js.staging-chargify.com/latest/chargify.js"></script>
-
-    <script>
-      const chargify = new Chargify();
-      chargify.load({
-        // selector where the iframe will be included in the host's HTML (i.e. '#chargify-form')
-        // optional if you have a `selector` on each and every field
-        selector: '#chargify-form',
-
-        // (i.e. '1a2cdsdn3lkn54lnlkn')
-        publicKey: '_publicKey_',
-
-        // form type (possible values: 'card' or 'bank')
-        type: 'card',
-
-        // points to your Chargify site
-        serverHost: '_serverHost_',
-
-      });
-    </script>
-
-    <script>
-      document.querySelector('.host-form').addEventListener('submit', function (event) {
-        const form = this;
-
-        event.preventDefault();
-
-        if (typeof onSubmitForm === 'function') {
-          onSubmitForm(); // eslint-disable-line no-undef
-        } else {
-          chargify.token(
-            form,
-
-            (token, message) => {
-              console.log('{host} token SUCCESS - token: ', token); // eslint-disable-line no-console
-
-              // host will write token in hidden input
-              document.querySelector('#host-token').value = token;
-
-              // and then submit form
-              // form.submit();
-              console.log('{host} form submitted'); // eslint-disable-line no-console
-
-              // if there is message show it via alert
-              if (message) {
-                alert(message);
-              }
-            },
-
-            (err) => {
-              console.log('{host} token ERROR - err: ', err); // eslint-disable-line no-console
-            },
-          );
-        }
-      });
-    </script>
+    <script src="./src/settings.js"></script>
   </body>
 </html>
