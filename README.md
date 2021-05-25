@@ -11,3 +11,11 @@ I will work on:
 * full billing address,
 * ach/direct debit,
 * paypal
+
+## Development:
+You can run local server:
+```
+cd dev
+ruby server.rb
+in browser: http://localhost:3001/
+```
