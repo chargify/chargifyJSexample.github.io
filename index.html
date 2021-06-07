@@ -9,12 +9,31 @@
     <form class="settings-form">
       <h2 id="chargify-js-settings">Settings</h2>
       <input type="text" id="chargify-js-src" class="settings-input" name="type"> Chargify.js path<br>
+      <span class="urls-label">Prod: </span><span class="urls">https://js.chargify.com/latest/chargify.js</span><br>
+      <span class="urls-label">Staging: </span><span class="urls">https://js.staging-chargify.com/latest/chargify.js</span><br><br>
       <input type="text" id="public-key" class="settings-input" name="type"> Public Key<br>
       <input type="text" id="server-host" class="settings-input" name="type"> Server Host (https://acme.chargify.test)<br>
-      <div class="error" style="display: none;">
+      <select name="examples" id="examples" class="settings-select">
+        <option value="load-card-minimal">Card minimal</option>
+        <option value="load-card-full">Card full</option>
+        <option value="load-3ds-card-minimal">3ds card minimal</option>
+        <option value="load-card-dropdowns">Card dropdowns</option>
+        <option value="load-bank-minimal">Bank-minimal</option>
+        <option value="load-bank-full">Bank-full</option>
+        <option value="load-gocardless">Gocardless</option>
+        <option value="load-direct-debit">Direct-debit</option>
+        <option value="load-pay-pal-minimal">Pay-pal-minimal</option>
+        <option value="load-pay-pal-full">Pay-pal-full</option>
+        <option value="load-apple-pay-minimal">Apple-pay-minimal</option>
+        <option value="load-apple-pay-full">Apple-pay-full</option>
+        <option value="switchable-payment-types">Switchable-payment-types</option>
+      </select> Example <br>
+      <div class="error" id="errors-box" style="display: none;">
         <span class="error-text">Fill fields</span><br>
       </div>
-      <button type="button" id="settings-submit">Save</button>
+      <br>
+      <button type="button" id="settings-submit" style="display: none;">Save & Reload</button>
+      <button disabled="true" type="button" id="settings-loading">Loading ...</button>
     </form>
 
     <form id="payment-types" style="display: none; margin-bottom: 20px;">

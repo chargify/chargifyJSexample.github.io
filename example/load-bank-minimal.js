@@ -8,12 +8,12 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: 'MY_PUBLIC_KEY',
+  publicKey: localStorage.getItem("publicKey"),
 
   // form type (possible values: 'card' or 'bank')
   type: 'bank',
 
   // points to your Chargify site
-  serverHost: 'https://acme.chargify.test',
+  serverHost: localStorage.getItem("serverHost"),
 
 });

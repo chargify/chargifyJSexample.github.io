@@ -12,10 +12,10 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: 'MY_PUBLIC_KEY',
+  publicKey: localStorage.getItem("publicKey"),
 
   // form type (possible values: 'card', 'bank', 'apple_pay', 'pay_pal', 'direct_debit')
   type: 'direct_debit',
 
-  serverHost: 'https://acme.chargify.test',
+  serverHost: localStorage.getItem("serverHost"),
 });

@@ -9,9 +9,9 @@ const chargify = new Chargify();
 // Initial load as credit card
 chargify.load({
   selector: '#chargify-form',
-  publicKey: 'MY_PUBLIC_KEY',
+  publicKey: localStorage.getItem("publicKey"),
   type: 'card',
-  serverHost: 'https://acme.chargify.test',
+  serverHost: localStorage.getItem("serverHost"),
 });
 
 document.getElementById('payment-type-card').addEventListener('click', () => {

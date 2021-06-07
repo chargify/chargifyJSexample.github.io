@@ -11,7 +11,7 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: 'MY_PUBLIC_KEY',
+  publicKey: localStorage.getItem("publicKey"),
 
   type: 'pay_pal',
 
@@ -19,7 +19,7 @@ chargify.load({
   selectorForPayPalButton: '#pay-pal',
 
   // points to your Chargify site
-  serverHost: 'https://acme.chargify.test',
+  serverHost: localStorage.getItem("serverHost"),
 
   // Use auto-populated dropdowns instead of plain text fields
   addressDropdowns: true,

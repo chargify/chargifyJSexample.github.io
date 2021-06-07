@@ -1,4 +1,3 @@
-var localStorage = window.localStorage;
 const chargify = new Chargify();
 
 chargify.load({

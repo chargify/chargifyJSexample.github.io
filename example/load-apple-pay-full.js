@@ -11,7 +11,7 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: 'MY_PUBLIC_KEY',
+  publicKey: localStorage.getItem("publicKey"),
 
   type: 'apple_pay',
 
@@ -23,7 +23,7 @@ chargify.load({
   selectorForApplePayButton: '#apple-pay',
 
   // points to your Chargify site
-  serverHost: 'https://acme.chargify.test',
+  serverHost: localStorage.getItem("serverHost"),
 
   fields: {
     firstName: {
