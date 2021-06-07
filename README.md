@@ -2,7 +2,7 @@
 https://chargify.github.io/chargify_js_example.github.io/
 
 ## Example:
-* Credit Card Min
+* Credit Card
 ![Screen+Recording+2021-06-07+at+02 38 38+PM](https://user-images.githubusercontent.com/8780680/121018080-4fa67000-c79e-11eb-98c3-48121cb0fbe1.gif)
 
 * Direct Debit:
