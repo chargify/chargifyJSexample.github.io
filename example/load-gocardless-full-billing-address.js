@@ -8,14 +8,14 @@ const chargify = new Chargify();
 
 chargify.load({
 
-  // selector where the iframe will be included in the host's HTML (i.e. '#chargify-form')
+  // selector where the iframe will be included in the host's HTML http://localhost:4000/example.html(i.e. '#chargify-form')
   // optional if you have a `selector` on each and every field
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
   publicKey: localStorage.getItem("publicKey"),
 
-  // form type (possible values: 'card', 'bank' or 'gocardless')
+  // form type (possible values: 'card', 'bank' or 'direct_debit')
   type: 'direct_debit',
 
   // selector for GoCardless header
@@ -33,4 +33,37 @@ chargify.load({
   // selectorForToggleIbanOrLocalDetails: '.cfy-field--bankIban',
   // points to your Chargify site
   serverHost: localStorage.getItem("serverHost"),
+
+  fields: {
+    firstName: {
+      selector: '#chargify-form',
+      required: true,
+    },
+    lastName: {
+      selector: '#chargify-form',
+      required: true,
+    },
+    address: {
+      selector: '#chargify-form',
+      required: true,
+    },
+    address2: {
+      selector: '#chargify-form',
+    },
+    country: {
+      selector: '#chargify-form',
+    },
+    city: {
+      selector: '#chargify-form',
+      required: true,
+    },
+    state: {
+      selector: '#chargify-form',
+      required: true,
+    },
+    zip: {
+      selector: '#chargify-form',
+      required: true,
+    },
+  }
 });
