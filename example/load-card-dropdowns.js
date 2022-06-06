@@ -15,6 +15,8 @@ chargify.load({
   // points to your Chargify site
   serverHost: localStorage.getItem("serverHost"),
 
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
+
   // Enable 3D secure
   threeDSecure: true,
 

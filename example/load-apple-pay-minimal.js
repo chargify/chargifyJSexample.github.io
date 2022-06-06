@@ -25,6 +25,8 @@ chargify.load({
 
   // points to your Chargify site
   serverHost: localStorage.getItem("serverHost"),
+
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
 }, {
   onApplePayAuthorized: function () {
     document.querySelector('.host-form').dispatchEvent(new Event('submit')); // submit form

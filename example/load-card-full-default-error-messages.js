@@ -16,6 +16,8 @@ chargify.load({
   // points to your Chargify site
   serverHost: localStorage.getItem("serverHost"),
 
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
+
   // flag to show/hide the credit card image
   // true: hides the credit card image
   // visible otherwise
