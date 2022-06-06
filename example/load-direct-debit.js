@@ -18,4 +18,6 @@ chargify.load({
   type: 'direct_debit',
 
   serverHost: localStorage.getItem("serverHost"),
+
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
 });

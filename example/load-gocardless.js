@@ -33,4 +33,6 @@ chargify.load({
   // selectorForToggleIbanOrLocalDetails: '.cfy-field--bankIban',
   // points to your Chargify site
   serverHost: localStorage.getItem("serverHost"),
+
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
 });
