@@ -9,6 +9,7 @@ chargify.load({
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
   publicKey: localStorage.getItem("publicKey"),
+  securityToken: localStorage.getItem("securityToken"),
 
   // form type (possible values: 'card' or 'bank')
   type: 'bank',

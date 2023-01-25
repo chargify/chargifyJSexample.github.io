@@ -13,6 +13,7 @@ chargify.load({
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
   publicKey: localStorage.getItem("publicKey"),
+  securityToken: localStorage.getItem("securityToken"),
 
   // form type (possible values: 'card', 'bank', 'apple_pay', 'pay_pal', 'direct_debit')
   type: 'direct_debit',

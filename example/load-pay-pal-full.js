@@ -12,6 +12,7 @@ chargify.load({
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
   publicKey: localStorage.getItem("publicKey"),
+  securityToken: localStorage.getItem("securityToken"),
 
   type: 'pay_pal',
 

@@ -1,5 +1,8 @@
+import { SignJWT } from 'jose'
+
 var chargifyJsSrc = document.getElementById('chargify-js-src');
 var publicKey = document.getElementById('public-key');
+var privateKey = document.getElementById('private-key');
 var serverHost = document.getElementById('server-host');
 var example = document.getElementById('examples');
 var gatewayHandle = document.getElementById('gateway-handle');
@@ -9,12 +12,26 @@ var errorBox = document.getElementById('errors-box');
 var localStorage = window.localStorage;
 var chargifyJsSrcValue = localStorage.getItem("chargifyJsSrc");
 var publicKeyValue = localStorage.getItem("publicKey");
+var privateKeyValue = localStorage.getItem('privateKey');
 var serverHostValue = localStorage.getItem("serverHost");
 var exampleValue = localStorage.getItem("example");
 var gatewayHandleValue = localStorage.getItem("gatewayHandle");
 
+const generateSecurityToken = async () => {
+  if (!privateKeyValue) { return null };
+
+  const secret = new TextEncoder().encode(privateKeyValue);
+  const result = new SignJWT({}).setProtectedHeader({ alg: 'HS256' })
+                                .setIssuer(publicKeyValue)
+                                .setJti(self.crypto.randomUUID())
+                                .setSubject(self.crypto.randomUUID())
+                                .sign(secret);
+  return result
+}
+
 chargifyJsSrc.value = chargifyJsSrcValue;
 publicKey.value = publicKeyValue;
+privateKey.value = privateKeyValue;
 serverHost.value = serverHostValue;
 example.value = exampleValue;
 gatewayHandle.value = gatewayHandleValue;
@@ -32,9 +49,11 @@ saveSettings = () => {
   loadingSubmit.style.display = "block";
   localStorage.setItem("chargifyJsSrc", chargifyJsSrc.value);
   localStorage.setItem("publicKey", publicKey.value);
+  localStorage.setItem("privateKey", privateKey.value);
   localStorage.setItem("serverHost", serverHost.value);
   localStorage.setItem("example", example.value);
   localStorage.setItem("gatewayHandle", gatewayHandle.value);
+  generateSecurityToken().then(securityToken => localStorage.setItem("securityToken", securityToken));
   location.reload();
 }
 
