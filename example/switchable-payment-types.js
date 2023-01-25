@@ -13,6 +13,7 @@ chargify.load({
   securityToken: localStorage.getItem("securityToken"),
   type: 'card',
   serverHost: localStorage.getItem("serverHost"),
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
 });
 
 document.getElementById('payment-type-card').addEventListener('click', () => {
