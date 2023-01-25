@@ -1,21 +1,21 @@
-import { SignJWT } from 'jose'
+import { SignJWT } from 'jose';
 
-var chargifyJsSrc = document.getElementById('chargify-js-src');
-var publicKey = document.getElementById('public-key');
-var privateKey = document.getElementById('private-key');
-var serverHost = document.getElementById('server-host');
-var example = document.getElementById('examples');
-var gatewayHandle = document.getElementById('gateway-handle');
-var settingsSubmit = document.getElementById('settings-submit');
-var loadingSubmit = document.getElementById('settings-loading');
-var errorBox = document.getElementById('errors-box');
-var localStorage = window.localStorage;
-var chargifyJsSrcValue = localStorage.getItem("chargifyJsSrc");
-var publicKeyValue = localStorage.getItem("publicKey");
-var privateKeyValue = localStorage.getItem('privateKey');
-var serverHostValue = localStorage.getItem("serverHost");
-var exampleValue = localStorage.getItem("example");
-var gatewayHandleValue = localStorage.getItem("gatewayHandle");
+const chargifyJsSrc = document.getElementById('chargify-js-src');
+const publicKey = document.getElementById('public-key');
+const privateKey = document.getElementById('private-key');
+const serverHost = document.getElementById('server-host');
+const example = document.getElementById('examples');
+const gatewayHandle = document.getElementById('gateway-handle');
+const settingsSubmit = document.getElementById('settings-submit');
+const loadingSubmit = document.getElementById('settings-loading');
+const errorBox = document.getElementById('errors-box');
+const localStorage = window.localStorage;
+const chargifyJsSrcValue = localStorage.getItem("chargifyJsSrc");
+const publicKeyValue = localStorage.getItem("publicKey");
+const privateKeyValue = localStorage.getItem('privateKey');
+const serverHostValue = localStorage.getItem("serverHost");
+const exampleValue = localStorage.getItem("example");
+const gatewayHandleValue = localStorage.getItem("gatewayHandle");
 
 const generateSecurityToken = async () => {
   if (!privateKeyValue) { return null };
@@ -59,16 +59,16 @@ saveSettings = () => {
 
 settingsSubmit.addEventListener("click", saveSettings);
 
-var chargifyJsSrcScript = document.createElement('script');
+const chargifyJsSrcScript = document.createElement('script');
 chargifyJsSrcScript.setAttribute('src', chargifyJsSrcValue);
 document.head.appendChild(chargifyJsSrcScript);
 
 setTimeout(() => {
-  var exampleScript = document.createElement('script');
+  const exampleScript = document.createElement('script');
   exampleScript.setAttribute('src',`./example/${example.value}.js`);
   document.head.appendChild(exampleScript);
 
-  var submitScript = document.createElement('script');
+  const submitScript = document.createElement('script');
   submitScript.setAttribute('src','./example/submit.js');
   document.head.appendChild(submitScript);
   loadingSubmit.style.display = "none";
