@@ -1,0 +1,16 @@
+{
+  "name": "chargify_js_example.github.io",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chargify/chargify_js_example.github.io"
+  },
+  "dependencies": {
+    "esbuild": "0.17.4",
+    "jose": "^4.11.2"
+  },
+  "scripts": {
+    "build": "esbuild src/settings.js --bundle --minify --sourcemap --outfile=dist/settings.js",
+    "watch": "esbuild src/settings.js --bundle --minify --sourcemap --outfile=dist/settings.js --watch"
+  }
+}
