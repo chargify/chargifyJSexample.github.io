@@ -35,24 +35,24 @@ if(!chargifyJsSrc.value){
 }
 
 if (!chargifyJsSrc.value || !publicKey.value || !serverHost.value || !example.value) {
-  errorBox.style.display = "block";
+  errorBox.style.display = 'block';
 }
 
 const saveSettings = () => {
-  settingsSubmit.style.display = "none";
-  loadingSubmit.style.display = "block";
-  localStorage.setItem("chargifyJsSrc", chargifyJsSrc.value);
-  localStorage.setItem("publicKey", publicKey.value);
-  localStorage.setItem("privateKey", privateKey.value);
-  localStorage.setItem("serverHost", serverHost.value);
-  localStorage.setItem("example", example.value);
-  localStorage.setItem("gatewayHandle", gatewayHandle.value);
+  settingsSubmit.style.display = 'none';
+  loadingSubmit.style.display = 'block';
+  localStorage.setItem('chargifyJsSrc', chargifyJsSrc.value);
+  localStorage.setItem('publicKey', publicKey.value);
+  localStorage.setItem('privateKey', privateKey.value);
+  localStorage.setItem('serverHost', serverHost.value);
+  localStorage.setItem('example', example.value);
+  localStorage.setItem('gatewayHandle', gatewayHandle.value);
   generateSecurityToken(publicKey.value, privateKey.value)
-    .then(securityToken => localStorage.setItem("securityToken", securityToken))
+    .then(securityToken => localStorage.setItem('securityToken', securityToken))
     .then(() => location.reload());
 }
 
-settingsSubmit.addEventListener("click", saveSettings);
+settingsSubmit.addEventListener('click', saveSettings);
 
 const chargifyJsSrcScript = document.createElement('script');
 chargifyJsSrcScript.setAttribute('src', chargifyJsSrc.value);
@@ -66,8 +66,8 @@ setTimeout(() => {
   const submitScript = document.createElement('script');
   submitScript.setAttribute('src','./example/submit.js');
   document.head.appendChild(submitScript);
-  loadingSubmit.style.display = "none";
-  settingsSubmit.style.display = "block";
+  loadingSubmit.style.display = 'none';
+  settingsSubmit.style.display = 'block';
 }, 2000);
 
 
