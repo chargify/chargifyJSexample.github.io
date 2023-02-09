@@ -10,15 +10,9 @@ const settingsSubmit = document.getElementById('settings-submit');
 const loadingSubmit = document.getElementById('settings-loading');
 const errorBox = document.getElementById('errors-box');
 const localStorage = window.localStorage;
-const chargifyJsSrcValue = localStorage.getItem("chargifyJsSrc");
-const publicKeyValue = localStorage.getItem("publicKey");
-const privateKeyValue = localStorage.getItem('privateKey');
-const serverHostValue = localStorage.getItem("serverHost");
-const exampleValue = localStorage.getItem("example");
-const gatewayHandleValue = localStorage.getItem("gatewayHandle");
 
-const generateSecurityToken = async () => {
-  if (!privateKeyValue) { return null };
+const generateSecurityToken = async (publicKeyValue, privateKeyValue) => {
+  if (!privateKeyValue || !publicKeyValue) { return null };
 
   const secret = new TextEncoder().encode(privateKeyValue);
   const result = new SignJWT({}).setProtectedHeader({ alg: 'HS256' })
@@ -29,38 +23,39 @@ const generateSecurityToken = async () => {
   return result
 }
 
-chargifyJsSrc.value = chargifyJsSrcValue;
-publicKey.value = publicKeyValue;
-privateKey.value = privateKeyValue;
-serverHost.value = serverHostValue;
-example.value = exampleValue;
-gatewayHandle.value = gatewayHandleValue;
+chargifyJsSrc.value = localStorage.getItem('chargifyJsSrc');
+publicKey.value = localStorage.getItem('publicKey');
+privateKey.value = localStorage.getItem('privateKey');
+serverHost.value = localStorage.getItem('serverHost');
+example.value = localStorage.getItem('example');
+gatewayHandle.value = localStorage.getItem('gatewayHandle');
 
 if(!chargifyJsSrc.value){
   chargifyJsSrc.value = 'https://js.chargify.com/latest/chargify.js';
 }
 
 if (!chargifyJsSrc.value || !publicKey.value || !serverHost.value || !example.value) {
-  errorBox.style.display = "block";
+  errorBox.style.display = 'block';
 }
 
-saveSettings = () => {
-  settingsSubmit.style.display = "none";
-  loadingSubmit.style.display = "block";
-  localStorage.setItem("chargifyJsSrc", chargifyJsSrc.value);
-  localStorage.setItem("publicKey", publicKey.value);
-  localStorage.setItem("privateKey", privateKey.value);
-  localStorage.setItem("serverHost", serverHost.value);
-  localStorage.setItem("example", example.value);
-  localStorage.setItem("gatewayHandle", gatewayHandle.value);
-  generateSecurityToken().then(securityToken => localStorage.setItem("securityToken", securityToken));
-  location.reload();
+const saveSettings = () => {
+  settingsSubmit.style.display = 'none';
+  loadingSubmit.style.display = 'block';
+  localStorage.setItem('chargifyJsSrc', chargifyJsSrc.value);
+  localStorage.setItem('publicKey', publicKey.value);
+  localStorage.setItem('privateKey', privateKey.value);
+  localStorage.setItem('serverHost', serverHost.value);
+  localStorage.setItem('example', example.value);
+  localStorage.setItem('gatewayHandle', gatewayHandle.value);
+  generateSecurityToken(publicKey.value, privateKey.value)
+    .then(securityToken => localStorage.setItem('securityToken', securityToken))
+    .then(() => location.reload());
 }
 
-settingsSubmit.addEventListener("click", saveSettings);
+settingsSubmit.addEventListener('click', saveSettings);
 
 const chargifyJsSrcScript = document.createElement('script');
-chargifyJsSrcScript.setAttribute('src', chargifyJsSrcValue);
+chargifyJsSrcScript.setAttribute('src', chargifyJsSrc.value);
 document.head.appendChild(chargifyJsSrcScript);
 
 setTimeout(() => {
@@ -71,8 +66,8 @@ setTimeout(() => {
   const submitScript = document.createElement('script');
   submitScript.setAttribute('src','./example/submit.js');
   document.head.appendChild(submitScript);
-  loadingSubmit.style.display = "none";
-  settingsSubmit.style.display = "block";
+  loadingSubmit.style.display = 'none';
+  settingsSubmit.style.display = 'block';
 }, 2000);
 
 
