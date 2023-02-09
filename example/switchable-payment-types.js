@@ -10,8 +10,10 @@ const chargify = new Chargify();
 chargify.load({
   selector: '#chargify-form',
   publicKey: localStorage.getItem("publicKey"),
+  securityToken: localStorage.getItem("securityToken"),
   type: 'card',
   serverHost: localStorage.getItem("serverHost"),
+  gatewayHandle: localStorage.getItem("gatewayHandle"),
 });
 
 document.getElementById('payment-type-card').addEventListener('click', () => {

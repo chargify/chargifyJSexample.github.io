@@ -12,6 +12,7 @@
       <span class="urls-label">Prod: </span><span class="urls">https://js.chargify.com/latest/chargify.js</span><br>
       <span class="urls-label">Staging: </span><span class="urls">https://js.staging-chargify.com/latest/chargify.js</span><br><br>
       <input type="text" id="public-key" class="settings-input" name="type"> Public Key<br>
+      <input type="text" id="private-key" class="settings-input" name="type"> Private Key (required if <a href="https://developers.chargify.com/docs/developer-docs/91a92b3772f9f-overview#security-token" target="_blank">Security Token</a> is enabled)<br>
       <input type="text" id="server-host" class="settings-input" name="type"> Server Host (https://acme.chargify.test)<br>
       <select name="examples" id="examples" class="settings-select">
         <option value="load-card-minimal">Card minimal</option>
@@ -84,6 +85,6 @@
       3ds (Wincave): 5453010000095323, password: secone1
     </div>
 
-    <script src="./src/settings.js"></script>
+    <script src="./dist/settings.js"></script>
   </body>
 </html>

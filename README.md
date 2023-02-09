@@ -10,7 +10,14 @@ https://chargify.github.io/chargify_js_example.github.io/
 
 
 ## Development:
-You can run local server:
+### Build the app:
+```
+npm install
+npm run build
+```
+You can also use `npm run watch`
+
+### You can run local server:
 ```
 cd dev
 ruby server.rb
