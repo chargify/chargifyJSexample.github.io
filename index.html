@@ -6,6 +6,12 @@
   </head>
 
   <body>
+    <button class="btn context-button" value="1">Context 1</button>
+    <button class="btn context-button" value="2">Context 2</button>
+    <button class="btn context-button" value="3">Context 3</button>
+    <button class="btn context-button" value="4">Context 4</button>
+    <button class="btn context-button" value="5">Context 5</button>
+
     <form class="settings-form">
       <h2 id="chargify-js-settings">Settings</h2>
       <input type="text" id="chargify-js-src" class="settings-input" name="type"> Chargify.js path<br>
@@ -36,8 +42,8 @@
         <span class="error-text">Fill fields</span><br>
       </div>
       <br>
-      <button type="button" id="settings-submit" style="display: none;">Save & Reload</button>
-      <button disabled="true" type="button" id="settings-loading">Loading ...</button>
+      <button class="btn" type="button" id="settings-submit" style="display: none;">Save & Reload</button>
+      <button class="btn" disabled="true" type="button" id="settings-loading">Loading ...</button>
     </form>
 
     <form id="payment-types" style="display: none; margin-bottom: 20px;">
@@ -73,7 +79,7 @@
         Hidden Token: <input id="host-token" disabled />
       </label>
 
-      <button type="submit" class="host-button">Submit Host Form</button>
+      <button type="submit" class="btn host-button">Submit Host Form</button>
     </form>
 
     <div id="example-card-numbers">

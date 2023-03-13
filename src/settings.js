@@ -10,6 +10,7 @@ const settingsSubmit = document.getElementById('settings-submit');
 const loadingSubmit = document.getElementById('settings-loading');
 const errorBox = document.getElementById('errors-box');
 const localStorage = window.localStorage;
+let context = localStorage.getItem('context') || '1';
 
 const generateSecurityToken = async (publicKeyValue, privateKeyValue) => {
   if (!privateKeyValue || !publicKeyValue) { return null };
@@ -23,12 +24,12 @@ const generateSecurityToken = async (publicKeyValue, privateKeyValue) => {
   return result
 }
 
-chargifyJsSrc.value = localStorage.getItem('chargifyJsSrc');
-publicKey.value = localStorage.getItem('publicKey');
-privateKey.value = localStorage.getItem('privateKey');
-serverHost.value = localStorage.getItem('serverHost');
-example.value = localStorage.getItem('example');
-gatewayHandle.value = localStorage.getItem('gatewayHandle');
+chargifyJsSrc.value = localStorage.getItem(`${context}chargifyJsSrc`);
+publicKey.value = localStorage.getItem(`${context}publicKey`);
+privateKey.value = localStorage.getItem(`${context}privateKey`);
+serverHost.value = localStorage.getItem(`${context}serverHost`);
+example.value = localStorage.getItem(`${context}example`);
+gatewayHandle.value = localStorage.getItem(`${context}gatewayHandle`);
 
 if(!chargifyJsSrc.value){
   chargifyJsSrc.value = 'https://js.chargify.com/latest/chargify.js';
@@ -41,18 +42,30 @@ if (!chargifyJsSrc.value || !publicKey.value || !serverHost.value || !example.va
 const saveSettings = () => {
   settingsSubmit.style.display = 'none';
   loadingSubmit.style.display = 'block';
-  localStorage.setItem('chargifyJsSrc', chargifyJsSrc.value);
-  localStorage.setItem('publicKey', publicKey.value);
-  localStorage.setItem('privateKey', privateKey.value);
-  localStorage.setItem('serverHost', serverHost.value);
-  localStorage.setItem('example', example.value);
-  localStorage.setItem('gatewayHandle', gatewayHandle.value);
+  localStorage.setItem('context', context);
+  localStorage.setItem(`${context}chargifyJsSrc`, chargifyJsSrc.value);
+  localStorage.setItem(`${context}publicKey`, publicKey.value);
+  localStorage.setItem(`${context}privateKey`, privateKey.value);
+  localStorage.setItem(`${context}serverHost`, serverHost.value);
+  localStorage.setItem(`${context}example`, example.value);
+  localStorage.setItem(`${context}gatewayHandle`, gatewayHandle.value);
   generateSecurityToken(publicKey.value, privateKey.value)
-    .then(securityToken => localStorage.setItem('securityToken', securityToken))
+    .then(securityToken => localStorage.setItem(`${context}securityToken`, securityToken))
     .then(() => location.reload());
 }
 
 settingsSubmit.addEventListener('click', saveSettings);
+
+const setContext = (name) => {
+  localStorage.setItem('context', name);
+  location.reload();
+}
+
+const contextButtons = document.querySelectorAll('.context-button');
+contextButtons.forEach(contextButton => {
+  contextButton.addEventListener('click', () => { setContext(contextButton.value) });
+  if (contextButton.value === context) contextButton.classList.add('active')
+});
 
 const chargifyJsSrcScript = document.createElement('script');
 chargifyJsSrcScript.setAttribute('src', chargifyJsSrc.value);
@@ -69,14 +82,3 @@ setTimeout(() => {
   loadingSubmit.style.display = 'none';
   settingsSubmit.style.display = 'block';
 }, 2000);
-
-
-
-
-
-
-
-
-
-
-

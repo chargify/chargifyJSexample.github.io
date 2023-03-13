@@ -1,4 +1,3 @@
-
 document.querySelector('.host-form').addEventListener('submit', function (event) {
   const form = this;
 
