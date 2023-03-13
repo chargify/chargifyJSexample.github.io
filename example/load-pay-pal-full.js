@@ -4,6 +4,7 @@ document.getElementById('example-card-numbers').style.display = 'none';
 document.querySelector('.host-button').style.display = 'none';
 
 const chargify = new Chargify();
+const context = localStorage.getItem('context');
 
 chargify.load({
   // selector where the iframe will be included in the host's HTML (i.e. '#chargify-form')
@@ -11,8 +12,8 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: localStorage.getItem("publicKey"),
-  securityToken: localStorage.getItem("securityToken"),
+  publicKey: localStorage.getItem(`${context}publicKey`),
+  securityToken: localStorage.getItem(`${context}securityToken`),
 
   type: 'pay_pal',
 
@@ -20,9 +21,9 @@ chargify.load({
   selectorForPayPalButton: '#pay-pal',
 
   // points to your Chargify site
-  serverHost: localStorage.getItem("serverHost"),
+  serverHost: localStorage.getItem(`${context}serverHost`),
 
-  gatewayHandle: localStorage.getItem("gatewayHandle"),
+  gatewayHandle: localStorage.getItem(`${context}gatewayHandle`),
 
   // Use auto-populated dropdowns instead of plain text fields
   addressDropdowns: true,

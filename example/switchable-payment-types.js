@@ -5,15 +5,16 @@ document.getElementById('billing-info').style.display = 'none';
 document.getElementById('bank-info').style.display = 'none';
 
 const chargify = new Chargify();
+const context = localStorage.getItem('context');
 
 // Initial load as credit card
 chargify.load({
   selector: '#chargify-form',
-  publicKey: localStorage.getItem("publicKey"),
-  securityToken: localStorage.getItem("securityToken"),
+  publicKey: localStorage.getItem(`${context}publicKey`),
+  securityToken: localStorage.getItem(`${context}securityToken`),
   type: 'card',
-  serverHost: localStorage.getItem("serverHost"),
-  gatewayHandle: localStorage.getItem("gatewayHandle"),
+  serverHost: localStorage.getItem(`${context}serverHost`),
+  gatewayHandle: localStorage.getItem(`${context}gatewayHandle`),
 });
 
 document.getElementById('payment-type-card').addEventListener('click', () => {

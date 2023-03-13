@@ -1,5 +1,5 @@
-
 const chargify = new Chargify();
+const context = localStorage.getItem('context');
 
 chargify.load({
 
@@ -8,16 +8,16 @@ chargify.load({
   selector: '#chargify-form',
 
   // (i.e. '1a2cdsdn3lkn54lnlkn')
-  publicKey: localStorage.getItem("publicKey"),
-  securityToken: localStorage.getItem("securityToken"),
+  publicKey: localStorage.getItem(`${context}publicKey`),
+  securityToken: localStorage.getItem(`${context}securityToken`),
 
   // form type (possible values: 'card' or 'bank')
   type: 'card',
 
   // points to your Chargify site
-  serverHost: localStorage.getItem("serverHost"),
+  serverHost: localStorage.getItem(`${context}serverHost`),
 
-  gatewayHandle: localStorage.getItem("gatewayHandle"),
+  gatewayHandle: localStorage.getItem(`${context}gatewayHandle`),
 
   // flag to show/hide the credit card image
   // true: hides the credit card image
