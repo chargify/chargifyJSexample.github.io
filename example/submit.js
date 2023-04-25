@@ -18,6 +18,7 @@ document.querySelector('.host-form').addEventListener('submit', function (event)
         // and then submit form
         // form.submit();
         console.log('{host} form submitted'); // eslint-disable-line no-console
+        document.getElementById('error-messages').textContent = '';
 
         // if there is message show it via alert
         if (message) {
@@ -26,6 +27,7 @@ document.querySelector('.host-form').addEventListener('submit', function (event)
       },
 
       (err) => {
+        document.getElementById('error-messages').textContent = err.errors;
         console.log('{host} token ERROR - err: ', err); // eslint-disable-line no-console
       },
     );
