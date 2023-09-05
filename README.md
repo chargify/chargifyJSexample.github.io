@@ -1,5 +1,5 @@
 ## Url:
-https://chargify.github.io/chargify_js_example.github.io/
+[https://chargify.github.io/chargify_js_example.github.io/](https://maxio-com.github.io/chargify_js_example.github.io/)
 
 ## Example:
 * Credit Card
