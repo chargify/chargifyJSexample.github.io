@@ -225,7 +225,7 @@ chargify.load({
     country: {
       selector: '#chargify-billing',
       label: 'Country',
-      placeholder: 'USA',
+      placeholder: 'United States',
       required: true,
       message: 'This field is not valid. Please update it.',
       maxlength: '30',
@@ -235,6 +235,7 @@ chargify.load({
         label: { paddingTop: '2px', paddingBottom: '1px', fontSize: '11px' },
         message: { paddingTop: '2px', paddingBottom: '1px' },
       },
+      value: 'US',
     },
 
   },
