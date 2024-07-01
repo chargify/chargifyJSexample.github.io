@@ -6,6 +6,7 @@ const privateKey = document.getElementById('private-key');
 const serverHost = document.getElementById('server-host');
 const example = document.getElementById('examples');
 const gatewayHandle = document.getElementById('gateway-handle');
+const oneTimeToken = document.getElementById('one-time-token');
 const settingsSubmit = document.getElementById('settings-submit');
 const loadingSubmit = document.getElementById('settings-loading');
 const errorBox = document.getElementById('errors-box');
@@ -30,6 +31,7 @@ privateKey.value = localStorage.getItem(`${context}privateKey`);
 serverHost.value = localStorage.getItem(`${context}serverHost`);
 example.value = localStorage.getItem(`${context}example`);
 gatewayHandle.value = localStorage.getItem(`${context}gatewayHandle`);
+oneTimeToken.value = localStorage.getItem(`${context}oneTimeToken`);
 
 if(!chargifyJsSrc.value){
   chargifyJsSrc.value = 'https://js.chargify.com/latest/chargify.js';
@@ -49,6 +51,7 @@ const saveSettings = () => {
   localStorage.setItem(`${context}serverHost`, serverHost.value);
   localStorage.setItem(`${context}example`, example.value);
   localStorage.setItem(`${context}gatewayHandle`, gatewayHandle.value);
+  localStorage.setItem(`${context}oneTimeToken`, oneTimeToken.value);
   generateSecurityToken(publicKey.value, privateKey.value)
     .then(securityToken => localStorage.setItem(`${context}securityToken`, securityToken))
     .then(() => location.reload());
