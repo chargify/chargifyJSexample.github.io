@@ -25,15 +25,45 @@ chargify.load({
         backgroundColor: '#000',
         color: '#fff',
         padding: '15px 25px',
-        textDecoration: 'none',
-        marging: '20 px'
+        textDecoration: 'none'
     },
 
     addressDropdowns: true,
 
     serverHost: localStorage.getItem(`${context}serverHost`),
     gatewayHandle: localStorage.getItem(`${context}gatewayHandle`),
-
+    fields: {
+        firstName: {
+          selector: '#chargify-form',
+          required: true,
+        },
+        lastName: {
+          selector: '#chargify-form',
+          required: true,
+        },
+        address: {
+          selector: '#chargify-form',
+          required: true,
+        },
+        address2: {
+          selector: '#chargify-form',
+        },
+        country: {
+          selector: '#chargify-form',
+        },
+        city: {
+          selector: '#chargify-form',
+          required: true,
+        },
+        state: {
+          selector: '#chargify-form',
+          required: true,
+        },
+        zip: {
+          selector: '#chargify-form',
+          required: true,
+        },
+      },
 },{
     onDirectDebitReceiveConfigurationError: function(error) { console.log('onDirectDebitReceiveConfigurationError: ' + error) },
     onReceivedDirectDebitConfiguration: function() { console.log('onReceivedDirectDebitConfiguration') },
