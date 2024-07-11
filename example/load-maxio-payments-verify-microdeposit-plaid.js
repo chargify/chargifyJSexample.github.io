@@ -31,9 +31,9 @@ chargify.verifyMicrodeposit({
 {
   onDirectDebitReceiveConfigurationError: function(error) { console.log('onDirectDebitReceiveConfigurationError: ' + error) },
   onReceivedDirectDebitConfiguration: function() { console.log('onReceivedDirectDebitConfiguration') },
-  onPlaidVerificationRequired: function(token) { console.log('This token requires manual verification:', token); },
+  onPlaidAccountVerificationPending: function(token) { console.log('This token requires manual verification:', token); },
   onPlaidLinkTokenError: function(error) { console.log('onPlaidLinkTokenError: ' + error) },
-  onPlaidVerifyAccountError: function(error) { console.log(error) },
+  onPlaidAccountVerificationError: function(error) { console.log(error) },
   onPlaidExit: function(error) { console.log('onPlaidExit: ' + error) },
 }
 );
